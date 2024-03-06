@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load static %}
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock styles %}
+
+{% block body %}
+ <!--================Home Banner Area =================-->
+ <section class="banner_area">
+    <div class="banner_inner d-flex align-items-center">
+      <div
+        class="overlay bg-parallax"
+        data-stellar-ratio="0.9"
+        data-stellar-vertical-offset="0"
+        data-background=""
+      ></div>
+      <div class="container">
+        <div class="banner_content text-center">
+          <h2>Programs</h2>
+          <div class="page_link">
+           <a class="text-white" href="/">Homepage</a>
+           <a href="/blog_detail/">Languages</a>
+           <a href="/blog_detail/">Programs</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--================End Home Banner Area =================-->
+  <section>
+    <center>
+     
+      
+    </center>
+  </section>
+  
+  
+  <section>
+    <h1 class="text-center">Programs</h1>
+    <div class="row">
+      <div class="col-sm-5">
+          
+      </div>
+      <div class="col-sm-4">
+        <div class="text-center">
+          <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+      <div class="col-sm-3">
+         
+      </div>
+  </div>
+   
+    <div class="container mt-5">
+      {% if results %}
+      {% for codes in codes %}
+      <div class="row">
+        <div class="col-md-6 mx-auto"> <!-- Set the width to half of the container width and center it -->
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title text-center text-black" style="font-weight: bolder;">{{codes.title}}
+                <button class="btn btn-sm btn-primary float-right copy-btn"><a href="/code/" style="color: white;">open IDE</a></button>
+                <button class="btn btn-sm btn-primary float-right copy-btn" onclick="copyText()"><i class="fa fa-copy"></i></button>
+              </h5>
+              <p class="card-text" style="margin-top: 70px;"> <pre>{{codes.code|safe}}</pre></p>
+            </div>
+            <hr>
+            <h5 class="text-center font-weight-bold">Program Description</h5>
+            <p class="p-3">{{codes.content}}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.6.2/js/bootstrap.min.js"></script>
+     
+     
+      <script>
+        function copyText() {
+            var textToCopy = document.querySelector('.card-text').innerText;
+            var tempInput = document.createElement("input");
+            tempInput.value = textToCopy;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            alert("Text copied to clipboard: " + textToCopy);
+        }
+    </script>
+      
+
+      {% else %}
+         <p class="text-center">No results Found!</p>
+      {% endif %}
+    </div>
+  </section>
+
+ 
+{% endblock body %}

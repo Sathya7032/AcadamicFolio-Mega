@@ -1,0 +1,198 @@
+{% extends "base.html" %} {% load static %} {% block body %}
+
+<section>
+  
+  <marquee style="background-color: aqua;" behavior="visible" direction="left">
+    <h5 class="text-white"><span class="text-danger">Latest Update -- </span>{{ latest_update.update }} on {{latest_update.date}}  <span class="text-info" >[You can add blogs by signing in click on signin button above ]  </span></h5></marquee>
+</section>
+
+<section class="hero-section">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-7">
+        
+        <h1 id="heading" class="text-center p-5" style="color: rgb(6, 89, 100); font-weight: bold"></h1>
+        <p id="text" class="text-center font-weight-bold" style="font-size: 16px"></p>
+        <center>
+          <button id="registerButton" class="btn" href="#">Register Now</button>
+        </center>
+      </div>
+      
+      <script>
+        // Text content to display with typing effect
+        const headingText = "AcadamicFolio";
+        const bodyText = "AcademicFolio: Your gateway to meme mastery, tutorial triumphs, and blog brilliance. Unleash your creativity with our curated collection of memes, dive deep into tutorials, and stay informed with captivating blogs. Explore, learn, and meme your way to greatness with AcademicFolio";
+        
+        // Reference to HTML elements
+        const headingElement = document.getElementById("heading");
+        const textElement = document.getElementById("text");
+        const registerButton = document.getElementById("registerButton");
+      
+        // Typing animation function
+        function typeEffect(element, text, speed) {
+          let i = 0;
+          const interval = setInterval(() => {
+            if (i < text.length) {
+              element.textContent += text.charAt(i);
+              i++;
+            } else {
+              clearInterval(interval);
+            }
+          }, speed);
+        }
+      
+        // Start typing effect
+        typeEffect(headingElement, headingText, 100);
+        setTimeout(() => {
+          typeEffect(textElement, bodyText, 30);
+        }, headingText.length * 100); // Delay body text typing until heading is complete
+      </script>
+      
+      
+      <div class="col-sm-5">
+        <img src="{% static 'images/students_09.jpg' %}" style="height: 100%;width: 100%;" alt="">
+    </div>
+  </div>
+</section>
+
+<section class="tutorials">
+  <h1 class="text-center p-3">Some of our Tutorials</h1>
+  <ul>
+    <li style="--accent-color: #0b374d">
+      <div class="icon"><i class="fa fa-database" aria-hidden="true"></i></div>
+      <div class="title">SQL&MySQL</div>
+      <div class="descr">
+        Structured Query Language (SQL) is a domain-specific language used in programming
+      </div>
+    </li>
+    <li style="--accent-color: #1286a8">
+      <div class="icon"><i class="fa fa-html5" aria-hidden="true"></i></div>
+      <div class="title">HTML 5</div>
+      <div class="descr">
+        Hypertext Markup Language 
+      </div>
+    </li>
+    <li style="--accent-color: #d2b53b">
+      <div class="icon"><i class="fa fa-css3" aria-hidden="true"></i></div>
+      <div class="title">CSS 3</div>
+      <div class="descr">Cascading Style Sheets (CSS) for website Design.</div>
+    </li>
+    <li style="--accent-color: #da611e">
+      <div class="icon"><i class="fa fa-cloud" aria-hidden="true"></i></div>
+      <div class="title">Javascript</div>
+      <div class="descr">
+        JavaScript is a high-level, interpreted programming language used to make web pages interactive and dynamic.
+      </div>
+    </li>
+    <li style="--accent-color: #ac2a1a">
+      <div class="icon"><i class="fa fa-git" aria-hidden="true"></i></div>
+      <div class="title">Github</div>
+      <div class="descr">
+        GitHub is a web-based platform used for version control and collaboration on software development projects using Git.
+      </div>
+    </li>
+  </ul>
+
+  <center>
+    <button class="btn m-4">Click here to explore our tutrials</button>
+  </center>
+</section>
+
+<section class="intro">
+  <h1 class="text-center p-4">AcadamicFolio provides you</h1>
+  <ul class="tilesWrap">
+    <li>
+      <h2>01</h2>
+      <h3 class="text-danger font-weight-bold">1.Online Ide</h3>
+      <p>
+        An integrated development environment (IDE) embedded in your website offers a seamless coding experience, enabling users to write, edit, and test code directly within the browser environment.
+      </p>
+      <button><a href="/code/" style="color: white;">Read More</a></button>
+    </li>
+    <li>
+      <h2>02</h2>
+      <h3 class="text-info font-weight-bold">2.codes</h3>
+      <p>
+        "Our website offers diverse programming language programs tailored to various skill levels and interests."
+      </p>
+      <button><a href="/code_page/" style="color: white;">Read More</a></button>
+    </li>
+    <li>
+      <h2>03</h2>
+      <h3 class="text-warning font-weight-bold">3.Blogs</h3>
+      <p>
+        Explore our website's insightful blogs covering a wide array of topics, offering valuable insights and perspectives for every reader
+      </p>
+      <button><a href="/blog_detail/" style="color: white;">Read More</a></button>
+    </li>
+    <li>
+      <h2>04</h2>
+      <h3 class="text-primary font-weight-bold" >4.Tutorials</h3>
+      <p>
+        Tutorials, your go-to destination for comprehensive and user-friendly guides on a wide array of topics, empowering you to master new skills effortlessly.
+      </p>
+      <button><a href="/tutorials/" style="color: white;">Read More</a></button>
+    </li>
+  </ul>
+</section>
+
+<section class="about-me">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-8">
+        <h1
+          class="text-center p-3"
+          style="color: rgb(6, 89, 100); font-weight: bold"
+        >
+          So Who I am ?
+        </h1>
+        <p class="text-center font-weight-bold" style="font-size: 16px">
+          Hello! I'm K. Satyanarayana Chary, a recent graduate from Marri Laxman
+          Reddy Institute of Technology and Management. Passionate about
+          technology and eager to share my knowledge with the world.
+        </p>
+        <h5
+          class="font-weight-bold text-center"
+          style="color: rgb(6, 89, 100); font-weight: bold"
+        >
+          About My Website:
+        </h5>
+        <p class="text-center font-weight-bold" style="font-size: 16px">
+          Welcome to my corner of the internet! Here, you'll find a wealth of
+          resources covering various topics such as technology, programming, and
+          personal development. I believe in sharing knowledge and empowering
+          others to learn and grow.
+        </p>
+        <center>
+          <div class="f_social_icon">
+            <a href="https://www.youtube.com/@AcadamicFolio" class="fa fa-youtube"></a>
+            <a href="https://www.instagram.com/satheesh_chary/" class="fa fa-instagram"></a>
+            <a href="https://www.linkedin.com/in/satyanarayana-chary-a87b651a9" class="fa fa-linkedin"></a>
+            <a href="https://github.com/Sathya7032" class="fa fa-github"></a>
+          </div>
+        </center>
+        <center>
+          <button class="btn"><a href="/contact/" style="color: white;">Contact Me</a></button>
+        </center>
+      </div>
+      <div class="col-sm-4">
+        <div class="container">
+          <img
+            src="{% static 'images/sathya.jpg' %}"
+            alt=""
+            width="100%"
+            height="80%"
+            class="image"
+            style="
+              margin-top: 50px;
+              border-radius: 30px;
+              border: 1px solid black;
+            "
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock body %}

@@ -1,0 +1,392 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {% block styles %}
+    {% endblock styles %}
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Roboto");
+@-webkit-keyframes come-in {
+  0% {
+    -webkit-transform: translatey(100px);
+            transform: translatey(100px);
+    opacity: 0;
+  }
+  30% {
+    -webkit-transform: translateX(-50px) scale(0.4);
+            transform: translateX(-50px) scale(0.4);
+  }
+  70% {
+    -webkit-transform: translateX(0px) scale(1.2);
+            transform: translateX(0px) scale(1.2);
+  }
+  100% {
+    -webkit-transform: translatey(0px) scale(1);
+            transform: translatey(0px) scale(1);
+    opacity: 1;
+  }
+}
+@keyframes come-in {
+  0% {
+    -webkit-transform: translatey(100px);
+            transform: translatey(100px);
+    opacity: 0;
+  }
+  30% {
+    -webkit-transform: translateX(-50px) scale(0.4);
+            transform: translateX(-50px) scale(0.4);
+  }
+  70% {
+    -webkit-transform: translateX(0px) scale(1.2);
+            transform: translateX(0px) scale(1.2);
+  }
+  100% {
+    -webkit-transform: translatey(0px) scale(1);
+            transform: translatey(0px) scale(1);
+    opacity: 1;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background: #eaedf2;
+  font-family: 'Roboto', sans-serif;
+}
+
+.floating-container {
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  bottom: 0;
+  right: 0;
+  margin: 35px 25px;
+  z-index: 1000;
+}
+.floating-container:hover {
+  height: 300px;
+}
+.floating-container:hover .floating-button {
+  box-shadow: 0 10px 25px rgba(8, 72, 102, 0.6);
+  -webkit-transform: translatey(5px);
+          transform: translatey(5px);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.floating-container:hover .element-container .float-element:nth-child(1) {
+  -webkit-animation: come-in 0.4s forwards 0.2s;
+          animation: come-in 0.4s forwards 0.2s;
+}
+.floating-container:hover .element-container .float-element:nth-child(2) {
+  -webkit-animation: come-in 0.4s forwards 0.4s;
+          animation: come-in 0.4s forwards 0.4s;
+}
+.floating-container:hover .element-container .float-element:nth-child(3) {
+  -webkit-animation: come-in 0.4s forwards 0.6s;
+          animation: come-in 0.4s forwards 0.6s;
+}
+.floating-container .floating-button {
+  position: absolute;
+  width: 65px;
+  height: 65px;
+  background: rgb(6, 89, 100);
+  bottom: 0;
+  border-radius: 50%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  color: white;
+  line-height: 65px;
+  text-align: center;
+  font-size: 23px;
+  z-index: 100;
+  box-shadow: 0 10px 25px -5px rgba(44, 179, 240, 0.6);
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.floating-container .float-element {
+  position: relative;
+  display: block;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin: 15px auto;
+  color: white;
+  font-weight: 500;
+  text-align: center;
+  line-height: 50px;
+  z-index: 0;
+  opacity: 0;
+  -webkit-transform: translateY(100px);
+          transform: translateY(100px);
+}
+.floating-container .float-element .material-icons {
+  vertical-align: middle;
+  font-size: 16px;
+}
+.floating-container .float-element:nth-child(1) {
+  background: #42A5F5;
+  box-shadow: 0 20px 20px -10px rgba(66, 165, 245, 0.5);
+}
+.floating-container .float-element:nth-child(2) {
+  background: #4CAF50;
+  box-shadow: 0 20px 20px -10px rgba(76, 175, 80, 0.5);
+}
+.floating-container .float-element:nth-child(3) {
+  background: #FF9800;
+  box-shadow: 0 20px 20px -10px rgba(255, 152, 0, 0.5);
+}
+
+
+
+    </style>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'logosmall.png' %}" type="image/png" />
+    <title>AcadamicFolio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <section class="header">
+        <div class="brand-header">
+            <a href="#default" class="logo"> <img src="{% static 'logosmall.png' %}" alt="" style="height: 20px;width: 200px;"></a>
+            
+        </div>
+        <div class="header-right">
+            
+            <li> <i class="fa fa-envelope" aria-hidden="true"></i> acadamicfolio@gmail.com</li>
+            <li><i class="fa fa-phone" aria-hidden="true"></i> +91 7032488372</li>
+        
+        </div>
+    </section>
+
+    <nav class="navbar navbar-expand-lg navbar-light ">
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
+          <span class="navbar-toggler-icon" style="float: right;"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item active" >
+              <a class="nav-link text-white" href="/"><i class="fa fa-home" aria-hidden="true"></i> Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/tutorials/">
+                <i class="fa fa-book" aria-hidden="true"></i> Tutorials</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="/blog_detail/">
+                  <i class="fa fa-comment" aria-hidden="true"></i> Blogs</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="/meme/">
+                  <i class="fa fa-smile-o" aria-hidden="true"></i> Memes</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                  <i class="fa fa-tasks" aria-hidden="true"> Our Pages</i>
+                </a>
+                <div class="dropdown-menu">
+                  <a class="nav-link text-white" href="/code_page/"><i class="fa fa-file-code-o" aria-hidden="true"></i> Programs</a>
+                  <a class="nav-link text-white" href="/contact/">
+                    <i class="fa fa-envelope-open" aria-hidden="true"></i> Contact</a>
+                </div>
+              </li>
+              
+            {% if user.is_authenticated %}
+            <li class="nav-item" style="background-color: rgb(2, 78, 78);border-radius: 12px;">
+                <a class="nav-link text-white" href="/logout/" onclick="openPopupForm()"><i class="fa fa-registered" aria-hidden="true"></i> Logout</a>
+            </li>
+            {% else %}
+            <li class="nav-item" style="background-color: rgb(2, 78, 78);border-radius: 12px;">
+                <a class="nav-link text-white" href="#" onclick="openPopupForm()"><i class="fa fa-registered" aria-hidden="true"></i> Signin/signup</a>
+            </li>
+            {% endif %}
+          </ul>
+         
+        </div>
+      </nav>
+
+     <!-- Popup form container -->
+<div id="popupForm" class="popup">
+    <!-- Tabs for Register and Login -->
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="true">Register</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="false">Login</a>
+        </li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content" id="myTabContent">
+        <!-- Register form -->
+        <div class="tab-pane fade show active" id="register" role="tabpanel" aria-labelledby="register-tab">
+            <form class="popup-content p-4" action="/register/" method="post">{% csrf_token %}
+                <span class="close" onclick="closePopupForm()">&times;</span>
+                <h2 class="mb-4">Registration Form</h2>
+                <div class="form-group">
+                    <label for="register-username">Username</label>
+                    <input type="text" class="form-control" id="register-username" placeholder="Enter Username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-email">Email</label>
+                    <input type="email" class="form-control" id="register-email" placeholder="Enter Email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Password</label>
+                    <input type="password" class="form-control" id="register-password" placeholder="Enter Password" name="password1" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Password</label>
+                    <input type="password" class="form-control" id="register-password" placeholder="Enter Password" name="password2" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+        </div>
+        <!-- Login form -->
+        <div class="tab-pane fade" id="login" role="tabpanel" aria-labelledby="login-tab">
+            <form class="popup-content p-4" action="/login/" method="post"> {% csrf_token %}
+                <span class="close" onclick="closePopupForm()">&times;</span>
+                <h2 class="mb-4">Login Form</h2>
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" class="form-control" id="login-email" placeholder="Enter Email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" class="form-control" id="login-password" placeholder="Enter Password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+                <a href="/password-reset/">Forgot Password?</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% if user.is_authenticated %}
+<div class="floating-container">
+    <div class="floating-button">+</div>
+    <div class="element-container">
+      
+      <a href="/code/"> <span class="float-element tooltip-left">
+        <i class="material-icons">Ide
+        </i></a>
+      </span>
+      <a href="/upload_blog/"><span class="float-element">
+        <i class="material-icons">Blog
+  </i></a>
+      </span>
+      <a href="/upload_meme/"> <span class="float-element">
+        <i class="material-icons">Meme</i></a>
+      </span>
+    </div>
+  </div>
+  {% endif %}
+    
+    {% block body %}
+      
+    {% endblock body %}
+    <footer class="new_footer_area bg_color">
+        <div class="new_footer_top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
+                            <h3 class="f-title f_600 t_color f_size_18">Get in Touch</h3>
+                            <p>Don’t miss any updates of our new tutorials and Blogs.!</p>
+                            <form action="#" class="f_subscribe_two mailchimp" method="post" novalidate="true" _lpchecked="1">
+                                <input type="text" name="EMAIL" class="form-control memail" placeholder="Email">
+                                <button class="btn btn_get btn_get_two" type="submit">Subscribe</button>
+                                <p class="mchimp-errmessage" style="display: none;"></p>
+                                <p class="mchimp-sucmessage" style="display: none;"></p>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
+                            <h3 class="f-title f_600 t_color f_size_18">Download</h3>
+                            <ul class="list-unstyled f_list">
+                                <li><a href="/">Home</a></li>
+                                <li><a href="/contact/">Contact</a></li>
+                                <li><a href="/code/">Free online Ide</a></li>
+                                <li><a href="/tutorials/">Tutorials</a></li>
+                                <li><a href="/blog_detail/">Blogs</a></li>
+                                <li><a href="/meme/">Meme</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
+                            <h3 class="f-title f_600 t_color f_size_18">Help</h3>
+                            <ul class="list-unstyled f_list">
+                                <li><a href="#">FAQ</a></li>
+                                <li><a href="#">Term &amp; conditions</a></li>
+                                <li><a href="#">Reporting</a></li>
+                                <li><a href="#">Documentation</a></li>
+                                <li><a href="#">Support Policy</a></li>
+                                <li><a href="#">Privacy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="f_widget social-widget pl_70 wow fadeInLeft" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
+                            <h3 class="f-title f_600 t_color f_size_18">Team Solutions</h3>
+                            <div class="f_social_icon">
+                              <a href="https://www.youtube.com/@AcadamicFolio" class="fa fa-youtube"></a>
+                              <a href="https://www.instagram.com/satheesh_chary/" class="fa fa-instagram"></a>
+                              <a href="https://www.linkedin.com/in/satyanarayana-chary-a87b651a9" class="fa fa-linkedin"></a>
+                              <a href="https://github.com/Sathya7032" class="fa fa-github"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer_bg">
+                <div class="footer_bg_one"></div>
+                <div class="footer_bg_two"></div>
+            </div>
+        </div>
+        <div class="footer_bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-sm-7">
+                        <p class="mb-0 f_400">© AcadamicFolio Inc.. 2024 All rights reserved.</p>
+                    </div>
+                    <div class="col-lg-6 col-sm-5 text-right">
+                        <p>Made with <i class="icon_heart"></i> in <a href="http://cakecounter.com" target="_blank">AcadamicFolio</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+    <script>
+        // Close the popup form when the page loads
+    document.addEventListener("DOMContentLoaded", function() {
+        closePopupForm();
+    });
+        // Open the popup form
+        function openPopupForm() {
+          document.getElementById("popupForm").style.display = "block";
+        }
+
+        // Close the popup form
+        function closePopupForm() {
+          document.getElementById("popupForm").style.display = "none";
+        }
+    </script>
+</body>
+</html>

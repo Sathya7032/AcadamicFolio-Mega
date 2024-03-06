@@ -1,0 +1,63 @@
+{% extends "base.html" %} {% load static %} 
+
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock styles %}
+
+{% block body %}
+ <!--================Home Banner Area =================-->
+ <section class="banner_area">
+  <div class="banner_inner d-flex align-items-center">
+      <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+      <div class="container">
+          <div class="banner_content text-center">
+              <h2>Meme Page</h2>
+              <div class="page_link">
+                  <a href="index.html">Home</a>
+                  <a href="contact.html">Contact</a>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<!--================End Home Banner Area =================-->
+
+<section>
+  <br/><br/>
+  <div class="container">
+    <div class="text-center">
+      <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  <br/><br/>  
+   
+
+    {% if results %}
+    
+      <div class="row">
+        
+        {% for meme in results %}
+        <div class="col-md-6" style="padding: 2px">
+          <div class="card" >
+            <img
+              src="/media/{{ meme.images }}"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <p class="card-text">{{ meme.description }}</p>
+            </div>
+            
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p>No results found.</p>
+      {% endif %}
+
+  </div>
+</section>
+{% endblock body %}
