@@ -25,9 +25,10 @@ urlpatterns = [
     path('tutorials/',tutorials,name="tutorials"),
     path('tutorials/<int:tut_id>/',tutorialView,name="tutorialView"),
     path('tutorials/post/<int:post_id>/',tutorialPost,name="tutorialPost"),
-    path('meme/',meme,name="meme"),
+    path('memes_page/',meme,name="memes_page"),
     path('code/',code,name="code"),
     path('code_page/<int:lan_id>/',code_pages,name="code_page"),
+    path('code_view/<int:code_id>/',code_view,name="code_view"),
 
     path('upload_meme/',upload_meme,name="upload_meme"),
     path('upload_blog/',post_blog,name="add_blog"),

@@ -162,7 +162,6 @@ def post_blog(request):
     return render(request, 'addBlog.html', {'form': form})	
 
 
-@login_required
 def meme(request):
      meme = Meme.objects.all()
      query = request.GET.get('q','')
@@ -197,3 +196,6 @@ def code_pages(request,lan_id):
     results = CodeSnippet.objects.filter(title__icontains=query)
     return render(request,"code_display1.html",{'language_id':language_id,'codes':codes,'results': results, 'query': query})
 
+def code_view(request,code_id):
+     codes = get_object_or_404(CodeSnippet,pk=code_id)
+     return render(request,"code_view.html",{'codes':codes})

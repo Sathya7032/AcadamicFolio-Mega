@@ -103,7 +103,7 @@
       <h1 class="text-center text-white" style="font-weight: bolder;">Languages</h1>
       <ul>
         {% for code in code %}
-        <li><span><a href="/code_page/{{code.id}}"><h4 class="text-white">{{code.id}} . {{ code.language }}</h4></a></span></li>
+        <li><span><a href="/code_page/{{code.id}}" style="color: white;"><h4 class="text-white">{{code.id}} . {{ code.language }}</h4></a></span></li>
         {% empty %}
         <li>No programs available in this language.</li>
         {% endfor %}

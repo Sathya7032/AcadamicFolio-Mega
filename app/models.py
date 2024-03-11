@@ -87,7 +87,7 @@ class Language(models.Model):
         return self.language
 
 class CodeSnippet(models.Model):
-    code_id = models.AutoField(primary_key=True,default=1)
+    code_id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100)
     code = models.TextField(default=1)
     content = models.TextField(default=1)

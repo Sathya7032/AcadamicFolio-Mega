@@ -2,102 +2,113 @@
 {% load static %}
 {% block styles %}
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.sec {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  min-height: 100vh;
+}
+
+.list1 {
+  position: relative;
+  width: 80%;
+}
+.list1 h1 {
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  margin-top: 12px;
+}
+.list1 ul {
+  position: relative;
+  width: 70%;
+}
+.list1 ul li {
+  position: relative;
+  left: 0;
+  color: #fce4ec;
+  list-style: none;
+  width: 100%;
+  margin: 4px 0;
+  border-left: 2px solid #f50057;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.list1 ul li:hover {
+  left: 10px;
+  right: 5px;
+}
+.list1 ul li span {
+  position: relative;
+  padding: 8px;
+  padding-left: 12px;
+  display: inline-block;
+  z-index: 1;
+  transition: 0.5s;
+}
+.list1 ul li:hover span {
+  color: #111;
+}
+.list1 ul li:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #f50057;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: 0.5s;
+}
+.list1 ul li:hover:before {
+  transform: scaleX(1);
+}
+  </style>
 {% endblock styles %}
-
 {% block body %}
- <!--================Home Banner Area =================-->
- <section class="banner_area">
-    <div class="banner_inner d-flex align-items-center">
-      <div
-        class="overlay bg-parallax"
-        data-stellar-ratio="0.9"
-        data-stellar-vertical-offset="0"
-        data-background=""
-      ></div>
-      <div class="container">
-        <div class="banner_content text-center">
-          <h2>Programs</h2>
-          <div class="page_link">
-           <a class="text-white" href="/">Homepage</a>
-           <a href="/blog_detail/">Languages</a>
-           <a href="/blog_detail/">Programs</a>
-          </div>
+  <!--================Home Banner Area =================-->
+<section class="banner_area">
+  <div class="banner_inner d-flex align-items-center">
+    <div
+      class="overlay bg-parallax"
+      data-stellar-ratio="0.9"
+      data-stellar-vertical-offset="0"
+      data-background=""
+    ></div>
+    <div class="container">
+      <div class="banner_content text-center">
+        <h2>Tutorials Topics</h2>
+        <div class="page_link">
+          <a href="/homepage/">Dashboard</a>
+          <a href="/tutorials/">Tutorials</a>
+          <a href="#">Tutorial Topics</a>
         </div>
       </div>
     </div>
-  </section>
-  <!--================End Home Banner Area =================-->
-  <section>
-    <center>
-     
-      
-    </center>
-  </section>
-  
-  
-  <section>
-    <h1 class="text-center">Programs</h1>
-    <div class="row">
-      <div class="col-sm-5">
-          
-      </div>
-      <div class="col-sm-4">
-        <div class="text-center">
-          <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
-        </div>
-      </div>
-      <div class="col-sm-3">
-         
-      </div>
   </div>
-   
-    <div class="container mt-5">
-      {% if results %}
-      {% for codes in codes %}
-      <div class="row">
-        <div class="col-md-6 mx-auto"> <!-- Set the width to half of the container width and center it -->
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title text-center text-black" style="font-weight: bolder;">{{codes.title}}
-                <button class="btn btn-sm btn-primary float-right copy-btn"><a href="/code/" style="color: white;">open IDE</a></button>
-                <button class="btn btn-sm btn-primary float-right copy-btn" onclick="copyText()"><i class="fa fa-copy"></i></button>
-              </h5>
-              <p class="card-text" style="margin-top: 70px;"> <pre>{{codes.code|safe}}</pre></p>
-            </div>
-            <hr>
-            <h5 class="text-center font-weight-bold">Program Description</h5>
-            <p class="p-3">{{codes.content}}</p>
-          </div>
-        </div>
-      </div>
-      {% endfor %}
-
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.6.2/js/bootstrap.min.js"></script>
-     
-     
-      <script>
-        function copyText() {
-            var textToCopy = document.querySelector('.card-text').innerText;
-            var tempInput = document.createElement("input");
-            tempInput.value = textToCopy;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand("copy");
-            document.body.removeChild(tempInput);
-            alert("Text copied to clipboard: " + textToCopy);
-        }
-    </script>
-      
-
-      {% else %}
-         <p class="text-center">No results Found!</p>
-      {% endif %}
+</section>
+<!--================End Home Banner Area =================-->
+    
+ <section class="sec">
+    <div class="list1">
+      <h1 class="text-center text-white" style="font-weight: bolder;">{{ tutorialName_id.tutorialName }} Posts</h1>
+      <ul>
+        {% for codes in codes %}
+        <li><span><a href="/code_view/{{codes.code_id}}" style="color: white;">{{ codes.title }}</a></span></li>
+        {% empty %}
+        <li>No posts available for this tutorial.</li>
+        {% endfor %}
+      </ul>
     </div>
   </section>
-
- 
 {% endblock body %}
