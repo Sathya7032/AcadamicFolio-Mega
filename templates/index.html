@@ -5,7 +5,14 @@
   <marquee style="background-color: aqua;" behavior="visible" direction="left">
     <h5 class="text-white"><span class="text-danger">Latest Update -- </span>{{ latest_update.update }} on {{latest_update.date}}  <span class="text-info" >[You can add blogs by signing in click on signin button above ]  </span></h5></marquee>
 </section>
-
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+  <strong>{{ message }}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endfor %}
 <section class="hero-section">
   <div class="container-fluid">
     <div class="row">

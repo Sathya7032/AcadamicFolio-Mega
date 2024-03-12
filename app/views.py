@@ -30,6 +30,7 @@ def register_view(request):
 			msg = EmailMultiAlternatives(subject, html_content, from_email, [to])
 			msg.attach_alternative(html_content, "text/html")
 			msg.send()
+            
 			##################################################################
 			return redirect('/')
 	else:

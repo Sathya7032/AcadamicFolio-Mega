@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block styles %}
-  <link rel="stylesheet" href="{% static 'css/tutorials.css' %}">
+  
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
 {% endblock styles %}
 {% block body %}
@@ -35,27 +35,26 @@
     <div class="projcard-container">
      {% for tutorials in tutorials %}
        
-     
-        <div class="projcard projcard-blue">
-          <div class="projcard-innerbox">
-            <img class="projcard-img" src="/media/{{tutorials.tutorialImage}}" />
-            <div class="projcard-textbox">
-              <div class="projcard-title">{{tutorials.tutorialName}}</div>
-              <div class="projcard-subtitle">This tutorial is about {{tutorials.tutorialName}}</div>
-              <div class="projcard-bar"></div>
-              <div class="projcard-description">{{tutorials.tutorialContent}}</div>
-              <div class="projcard-tagbox">
-                <span class="projcard-tag"><a href="/tutorials/{{tutorials.id}}">view</a></span>
-                <a href="/tutorials/{{tutorials.id}}/">view</a>
-                <span class="projcard-tag">CSS</span>
-              </div>
+     <center>
+     <div class="container m-3">
+      <div class="row">
+        <div class="col"></div>
+        <div class="col-md-6 col-lg-8">
+          <div class="card">
+            <img src="/media/{{tutorials.tutorialImage}}" class="card-img-top" style="height: 400px;" alt="Placeholder Image">
+            <div class="card-body">
+              <h5 class="card-title">{{tutorials.tutorialName}}</h5>
+              <p class="card-text">{{tutorials.tutorialContent}}</p>
+              <a href="/tutorials/{{tutorials.id}}/" class="btn btn-primary">Go To Tutorials</a>
             </div>
           </div>
-        </div> 
-        
-        <center>
-            <a class="main_btn" href="/tutorials/{{tutorials.id}}">Explore Tutorial</a>
-        </center>
+        </div>
+
+        <div class="col"></div>
+
+      </div>
+      </div>
+    </center>
 
         {% endfor %}
       </div>
